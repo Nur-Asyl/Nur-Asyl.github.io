@@ -1,0 +1,59 @@
+:root {
+    --red: #e50914;
+    --white: #fff;
+    --black: #000000;
+    --light-color:#181818;
+    --box-shadow: 0rem .5rem 1.5rem rgb(255, 255, 255);
+}
+
+.my-header {
+    box-shadow: var(--box-shadow);
+}
+
+.my-header:hover{
+    background: var(--black);
+    backdrop-filter: 0;
+}
+
+.my-btn-play{
+    color: var(--white);
+    transition: .5s;
+}
+
+.my-btn-play:hover{
+    color: #e50914;
+    rotate: 360deg;
+}
+
+.my-cartoon-container{
+    min-height: 250px;
+    max-height: 250px;
+}
+
+.my-hr {
+    border: 1.5px solid #fff;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow)
+}
+
+
+.discription-box {
+    background: transparent;
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,.2);
+    box-shadow: var(--box-shadow);
+    transition: .5s;
+}
+
+.discription-box:hover {
+    backdrop-filter: blur(8px);
+    transform: scale(1.1);
+    box-shadow: 0rem .5rem .5rem rgb(0, 0, 0);
+}
+
+.dropdown-item:hover {
+    background-color: var(--red);
+    border-radius: 10px;
+    filter: drop-shadow(1px 1px 5px var(--white));
+}

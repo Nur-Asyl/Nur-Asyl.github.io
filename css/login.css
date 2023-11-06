@@ -1,0 +1,5 @@
+.container-fluid {
+    width: 420px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+}

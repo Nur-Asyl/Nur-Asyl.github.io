@@ -1,0 +1,88 @@
+.image-slider {
+    height: 100vh;
+    position: relative;
+    background-image: url("../assets/Adventure_time.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: .3s;
+}
+
+.image-slider * {
+    box-sizing: border-box;
+}
+
+
+.description-box {
+    position: relative;
+    top: 55%;
+    width: 60%;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    background: transparent;
+    backdrop-filter: blur(3px);
+    border-radius: 10px;
+    border: 2px solid rgba(255,255,255,.2);
+    box-shadow: var(--box-shadow);
+    transition: .5s;
+}
+
+.description-box:hover {
+    backdrop-filter: blur(8px);
+    transform: scale(1.1);
+    box-shadow: 0rem .5rem .5rem rgb(0, 0, 0);
+}
+
+.description-box h1 {
+    margin: .25em 1em .25em 1em;
+    color: #fff;
+    text-align: center;
+}
+
+.description-box p {
+    color: #fff;
+    text-align: center;
+    font-size: large;
+}
+
+.arrow-left, .arrow-right {
+    font-size: 30px;
+    background-color: transparent;
+    color: #fff;
+    position: absolute;
+    top: 40%;
+    width: 3em;
+    height: 3em;
+    border: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.arrow-left:hover, .arrow-right:hover {
+    background-color: transparent;
+    color: red;
+    transform: scale(1.2);
+}
+
+.arrow-left {
+    left: 1em;
+}
+
+.arrow-right {
+    right: 1em;
+}
+
+.image-fade {
+    animation: imgFade 0.5s ease-in-out;
+}
+
+@keyframes imgFade {
+    0% {opacity: 0;}
+    100%{opacity: 1;}
+}

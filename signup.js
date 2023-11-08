@@ -1,4 +1,10 @@
 
+if (!localStorage.getItem('users')) {
+    localStorage.setItem('users', JSON.stringify([]));
+  }
+
+let existingUsersJSON = localStorage.getItem('users');
+let existingUsers = JSON.parse(existingUsersJSON);
 
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector("#signup");
@@ -14,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function() {
     );
     let nameValid = false;
     let passwordValid = false;
+    let phoneValid = false;
     let errorPasswordArr = [];
 
     usernameInput.addEventListener("input", function() {
@@ -63,24 +70,42 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     phoneInput.addEventListener("input", function() {
-        
+        const phone = phoneInput.value;
+        if (phone.trim().length < 11) {
+            errorPhone.innerText = "Invalid phone";
+            phoneValid = false;
+        } 
+        if (phoneValid) {
+            errorPhone.innerText = null;
+        }
+        phoneValid = true;
     });
 
     form.addEventListener('submit', (event) => {
         event.preventDefault();
         
-        if (nameValid && passwordValid) {
-            window.location.href = '/home.html';
-
-            const user = {
+        if (nameValid && passwordValid && phoneValid) {
+            alert("work");
+            
+            let newUser = {
                 username: usernameInput.value,
                 password: passwordInput.value,
                 isUserRegistered: false,
                 watchedTitles: 0,
                 likedTitles: []
-              };
-        
-              localStorage.setItem("user", JSON.stringify(user));
+            };
+            
+            
+            let loggedInUser = existingUsers.find(user => user.username === newUser.username);
+            if(loggedInUser) {
+                errorPassword.innerText = "User already exist";
+            } else {
+                existingUsers.push(newUser);
+                
+                localStorage.setItem('users', JSON.stringify(existingUsers));
+                window.location.href = 'index.html';
+            }
+            
         }
     });
 });

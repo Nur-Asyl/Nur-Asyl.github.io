@@ -1,4 +1,3 @@
-
 const form = document.querySelector("#login");
 const logout = document.getElementById("logout");
 const errorName = document.getElementById("errorName");
@@ -7,17 +6,16 @@ const usernameInput = form.elements["name"];
 const passwordInput = form.elements["password"];
 const loginContent = document.getElementById("login-content");
 const profileContent = document.getElementById("profile-content");
-const modalBackdrop = document.querySelector(".modal-backdrop");
 
-if (modalBackdrop) {
-    modalBackdrop.style.zIndex = -1;
+if (!localStorage.getItem('users')) {
+    localStorage.setItem('users', JSON.stringify([]));
 }
 
-const storedUser = JSON.parse(localStorage.getItem("user"));
+let existingUsersJSON = localStorage.getItem('users');
+let existingUsers = JSON.parse(existingUsersJSON);
+let loggedInUser = null;
 
-
-let isUserRegistered = (storedUser === null) ? false : storedUser.isUserRegistered; 
-
+existingUsers = existingUsers.map(user => ({ ...user, isUserRegistered: false }));
 
 function showLoginContent() {
     loginContent.style.display = "block";
@@ -31,35 +29,37 @@ function showProfileContent() {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    if(isUserRegistered) {
+    if (!loggedInUser) {
+        alert("shh");
         showProfileContent();
     } else {
         showLoginContent();
     }
 
-
     form.addEventListener('submit', (event) => {
         event.preventDefault();
-        
-        if (storedUser.username === usernameInput.value) {
-            if (passwordInput.value === storedUser.password) {
-                storedUser.isUserRegistered = true;
-                localStorage.setItem("user", JSON.stringify(storedUser));
-                window.location.href = "/home.html";
-            } else {
-                errorPassword.innerText = "Invalid username or password";
-            }
+        const username = usernameInput.value;
+        const password = passwordInput.value;
+
+        const userMatch = existingUsers.find(user => user.username === username);
+
+        if (userMatch && userMatch.password === password) {
+            userMatch.isUserRegistered = true;
+            localStorage.setItem("users", JSON.stringify(existingUsers));
+            loggedInUser = userMatch;
+            showProfileContent();
+            window.location.href = "index.html";
         } else {
-            errorPassword.innerText = "No user found";
+            errorPassword.innerText = "Invalid username or password";
         }
     });
-    
+
     logout.addEventListener("click", function() {
-        storedUser.isUserRegistered = false;
-        localStorage.setItem("user", JSON.stringify(storedUser));
+        if (loggedInUser) {
+            loggedInUser.isUserRegistered = false;
+            localStorage.setItem("users", JSON.stringify(existingUsers));
+            loggedInUser = null;
+            showLoginContent();
+        }
     });
 });
-
-
-
-

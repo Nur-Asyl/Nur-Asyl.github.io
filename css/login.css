@@ -1,5 +1,9 @@
-.container-fluid {
+.container-signup {
     width: 420px;
     background: transparent;
     backdrop-filter: blur(20px);
+}
+
+.modal-backdrop {
+    z-index: -1;
 }

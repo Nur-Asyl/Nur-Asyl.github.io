@@ -1,0 +1,4 @@
+.create-container {
+    background: transparent;
+    backdrop-filter: blur(20px);
+}

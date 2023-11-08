@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniToon</title>
+    <link rel="icon" type="image/x-icon" href="assets/chibi-logo.png">
+    
+    <!-- bootstrap cdn css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- bootstrap cdn js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- font awesome cdn css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- javascript -->
+    <script defer type="module" src="admin/adminDatabase.js"></script>
+
+    <!-- css file -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/adminDatabase.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+<body class="bg-light">
+
+    <!-- header  -->
+    <nav class="bg-black navbar text-white fixed-top position-sticky my-header">
+        <div class="container-fluid justify-content-between">
+            
+            <!-- offcanvas menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle Navigation">
+                <i class="fas fa-bars" style="color: brown; font-size: xx-large;"></i>
+            </button>
+            <div class="offcanvas offcanvas-start bg-black" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">UniToon.</h5>
+                    <button type="button" class="btn-close bg-danger" style="font-size: x-large;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-lg-center justify-content-end flex-grow-1 mx-5 fs-2 fw-normal">
+                        <hr class="my-hr">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active text-white" aria-current="page" href="admin.html">Admin  <i class="fas fa-home"></i></a>
+                        </li>
+                        <hr class="my-hr">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active text-white" aria-current="page" href="admin/create.html">Create  <i class="fas fa-egg"></i></a>
+                        </li>
+                        <hr class="my-hr">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" href="admin/edit.html">Edit  <i class="fa-solid fa-pencil"></i></a>
+                        </li>
+                        <hr class="my-hr">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" href="admin/delete.html">Delete  <i class="fa-solid fa-remove"></i></a>
+                        </li>
+                        <hr class="my-hr">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </nav>
+
+    <!-- user list  -->
+
+    <div id="user-list">
+
+    </div>
+
+</body>
+</html>

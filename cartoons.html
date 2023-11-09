@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <!-- javascript -->
-    <script defer type="module" src="filter.js"></script>
+    <script defer type="module" src="cartoons.js"></script>
+    <script defer type="module" src="filterByGenre.js"></script>
     <script defer type="module" src="login.js"></script>
 
     <!-- css file -->
@@ -150,13 +151,26 @@
 
     <!-- main section -->
 
-    <!-- popularCartoons  -->
+    <!-- Cartoons  -->
     
     <div class="display-4 text-white text-center pt-3 pb-3" id="cartoon">Cartoons</div>
     
     <hr class="my-hr">
+
+    <div class="dropdown">
+        <button id="filter" class="btn btn-black fs-4 ms-5 dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-filter" style="color: #ff0505;"></i>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a id="adventure" class="dropdown-item" href="#">Adventure</a></li>
+            <li><a id="action" class="dropdown-item" href="#">Action</a></li>
+            <li><a id="mystic" class="dropdown-item" href="#">Mystic</a></li>
+            <li><a id="fantasy" class="dropdown-item" href="#">Fantasy</a></li>
+        </ul>
+    </div>
+
     <div class="container text-center mt-5">
-        <div id="popularCartoons-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div id="cartoons-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
         </div>
     </div>

@@ -34,6 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     displayContent();
 });
 
+function generateCartoon(id) {
+    window.location.href = `cartoon.html?cartoonId=${id}`;
+}
+
 function displayContent() {
     cartoonsList.innerHTML = "";
     for (let i = 0; i < filteredCartoons.length; i++) {

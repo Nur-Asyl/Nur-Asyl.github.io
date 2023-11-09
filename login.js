@@ -7,13 +7,22 @@ const passwordInput = form.elements["password"];
 const loginContent = document.getElementById("login-content");
 const profileContent = document.getElementById("profile-content");
 
-if (!localStorage.getItem('users')) {
-    localStorage.setItem('users', JSON.stringify([]));
-}
+const adminName = "admin";
+const adminPassword = "admin123";
 
-let existingUsersJSON = localStorage.getItem('users');
+if (!localStorage.getItem("users")) {
+    localStorage.setItem("users", JSON.stringify([
+        {
+            username: adminName,
+            password: adminPassword,
+            isUserRegistered: false
+        }
+    ]));
+  }
+
+let existingUsersJSON = localStorage.getItem("users");
 let existingUsers = JSON.parse(existingUsersJSON);
-let loggedInUser = null;
+let loggedInUser = existingUsers.find(user => user.isUserRegistered === true);
 
 existingUsers = existingUsers.map(user => ({ ...user, isUserRegistered: false }));
 
@@ -29,8 +38,7 @@ function showProfileContent() {
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    if (!loggedInUser) {
-        alert("shh");
+    if (loggedInUser !== undefined) {
         showProfileContent();
     } else {
         showLoginContent();
@@ -44,21 +52,25 @@ document.addEventListener("DOMContentLoaded", function() {
         const userMatch = existingUsers.find(user => user.username === username);
 
         if (userMatch && userMatch.password === password) {
+
+            if(userMatch.password === adminPassword) {
+                window.location.href = "../admin.html";
+                return
+            }
             userMatch.isUserRegistered = true;
             localStorage.setItem("users", JSON.stringify(existingUsers));
             loggedInUser = userMatch;
             showProfileContent();
-            window.location.href = "index.html";
+            window.location.href = "../index.html";
         } else {
             errorPassword.innerText = "Invalid username or password";
         }
     });
 
     logout.addEventListener("click", function() {
-        if (loggedInUser) {
+        if (loggedInUser.isUserRegistered) {
             loggedInUser.isUserRegistered = false;
             localStorage.setItem("users", JSON.stringify(existingUsers));
-            loggedInUser = null;
             showLoginContent();
         }
     });

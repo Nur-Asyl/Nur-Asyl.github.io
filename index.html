@@ -16,7 +16,7 @@
 
     <!-- javascript -->
     <script defer type="module" src="slider.js"></script>
-    <script defer type="module" src="cartoons.js"></script>
+    <script defer type="module" src="filterByRelease.js"></script>
     <script defer type="module" src="login.js"></script>
 
     <!-- css file -->
@@ -56,13 +56,10 @@
                             <a class="nav-link active text-white" aria-current="page" href="index.html">Home <i class="fa-solid fa-house"></i></a>
                         </li>
                         <li class="nav-item mx-2">
-                            <a class="nav-link text-white" href="#cartoon">Cartoon <i class="fa-brands fa-youtube"></i></a>
+                            <a class="nav-link text-white" href="cartoons.html">Cartoon <i class="fa-brands fa-youtube"></i></a>
                         </li>
                         <li class="nav-item mx-2">
                             <a class="nav-link text-white" href="popularCartoons.html">Popular <i class="fa-solid fa-fire"></i></a>
-                        </li>
-                        <li class="nav-item mx-2">
-                            <a class="nav-link text-white" href="#">Stream <i class="fa-solid fa-eye"></i></a>
                         </li>
 
                         <!-- login and signup -->
@@ -111,11 +108,6 @@
                                                     </div>
                                                   </div>
                                                 </div>
-                                    
-                                                <div class="mb-3 form-check fs-6">
-                                                  <input type="checkbox" class="form-check-input" id="rememberMe">
-                                                  <label class="form-check-label" for="rememberMe">remember me</label>
-                                                </div>
                                 
                                     
                                                 <button type="submit" class="btn btn-danger w-100 mb-3">Log in</button>
@@ -140,16 +132,10 @@
                                     <a class="dropdown-item my-item text-white" href="profile.html">Profile</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item text-white" href="#">Notifications</a>
-                                </li>
-                                <li>
-                                    <a class="dropdown-item text-white" href="#">Settings</a>
-                                </li>
-                                <li>
                                     <hr class="dropdown-divider bg-white">
                                 </li>
                                 <li>
-                                    <a id="logout" class="dropdown-item text-white" href="home.html">Log out</a>
+                                    <a id="logout" class="dropdown-item text-white" href="index.html">Log out</a>
                                 </li>
                             </ul>
                         </li>
@@ -192,10 +178,10 @@
 
     <hr class="my-hr">
 
-    <div class="display-4 text-white text-center" id="cartoon">Cartoons</div>
+    <div class="display-4 text-white text-center" id="cartoon">New Cartoons</div>
 
     <div class="container text-center mt-5">
-        <div id="cartoons-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+        <div id="new-cartoons-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 
         </div>
     </div>

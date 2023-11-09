@@ -1,7 +1,9 @@
 const username = document.getElementById("username");
 const watchedTitles = document.getElementById("watched-titles");
 
-const userStored = localStorage.getItem("user");
+const existingUsersJSON = localStorage.getItem("users");
+let existingUsers = JSON.parse(existingUsersJSON);
+let loggedInUser = existingUsers.find(user => user.isUserRegistered === true);
 
-username.innerText = JSON.parse(userStored).username;
-watchedTitles.innerText += "\t" + JSON.parse(userStored).watchedTitles;
+username.innerText = loggedInUser.username;
+watchedTitles.innerText += "\t" + loggedInUser.watchedTitles;

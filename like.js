@@ -1,10 +1,19 @@
 import { cartoons } from "./db_cartoons.js";
 
+
+function getQueryParams() {
+    const params = new URLSearchParams(window.location.search);
+    return Object.fromEntries(params.entries());
+}
+
+const queryParams = getQueryParams();
+const cartoonId = queryParams.cartoonId;
+
 document.addEventListener("DOMContentLoaded", function () {
     const likeButton = document.getElementById("likeButton");
     const likeCount = document.getElementById("likeCount");
 
-    let likes = cartoons.likes;
+    let likes = cartoons[cartoonId].likes;
     let isLiked = false;
 
     function toggleLike() {

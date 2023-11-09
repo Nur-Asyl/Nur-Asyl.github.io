@@ -1,6 +1,11 @@
 
 if (!localStorage.getItem('users')) {
-    localStorage.setItem('users', JSON.stringify([]));
+    localStorage.setItem('users', JSON.stringify([
+        {
+            username: admin,
+            password: admin123
+        }
+    ]));
   }
 
 let existingUsersJSON = localStorage.getItem('users');
@@ -71,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     phoneInput.addEventListener("input", function() {
         const phone = phoneInput.value;
-        if (phone.trim().length < 11) {
+        if (phone.trim().length < 16) {
             errorPhone.innerText = "Invalid phone";
             phoneValid = false;
         } 
@@ -85,11 +90,11 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         
         if (nameValid && passwordValid && phoneValid) {
-            alert("work");
             
             let newUser = {
                 username: usernameInput.value,
                 password: passwordInput.value,
+                phone: phoneInput.value,
                 isUserRegistered: false,
                 watchedTitles: 0,
                 likedTitles: []

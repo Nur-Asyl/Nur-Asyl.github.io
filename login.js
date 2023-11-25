@@ -13,6 +13,7 @@ const adminPassword = "admin123";
 if (!localStorage.getItem("users")) {
     localStorage.setItem("users", JSON.stringify([
         {
+            id: 0,
             username: adminName,
             password: adminPassword,
             isUserRegistered: false

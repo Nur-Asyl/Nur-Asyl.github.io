@@ -16,11 +16,14 @@
 
     <!-- javascript -->
     <script defer type="module" src="admin/adminDatabase.js"></script>
+    <script defer type="module" src="admin/create.js"></script>
+
+    <!-- IMask -->
+    <script defer src="https://unpkg.com/imask"></script>
 
     <!-- css file -->
-    <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/adminDatabase.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
 </head>
 <body class="bg-light">
 
@@ -65,11 +68,148 @@
         
     </nav>
 
+    <!-- create  -->
+    <!-- Modal  -->
+
+    <div class="m-2 float-end">
+        <button class="btn btn-danger" id="create-content" data-bs-toggle="modal" data-bs-target="#createUserModal" aria-expanded="false">
+            <i class="fa-solid fa-plus"></i>
+        </button>
+    </div>
+
+    <div class="modal fade" id="createUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white border-5 border-danger border-opacity-50">
+                <div class="modal-header">
+                    <h1 class="modal-title ms-3 fs-4" id="exampleModalLabel">Edit User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="user-creation-form">
+                        <div class="create-container border-end-0 rounded-5 m-5 p-4 text-white shadow-lg border">
+                            <div class="mb-3">
+                                <label for="createName" class="form-label">Username</label>
+                                <div class="d-block align-items-center">
+                                    <div class="d-flex">
+                                        <input id="createName" type="text" class="form-control" placeholder="Username" aria-describedby="emailHelp">
+                                        <i class='fa-solid fa-user ms-2 mt-2'></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-danger" id="createErrorName"></p>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="mb-3">
+                                <label for="createPassword" class="form-label">Password</label>
+                                <div class="d-block align-items-center">
+                                    <div class="d-flex">
+                                        <input id="createPassword" type="password" class="form-control" placeholder="Password">
+                                        <i class="fa-solid fa-lock ms-2 mt-2"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-danger" id="createErrorPassword"></p>
+                                    </div>
+
+                                <div class="mb-3">
+                                <label for="createPhone" class="form-label">Phone</label>
+                                <div class="d-block align-items-center">
+                                    <div class="d-flex">
+                                        <input id="createPhone" type="tel" class="form-control" placeholder="Phone">
+                                        <i class="fa-solid fa-phone ms-2 mt-2"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-danger" id="createErrorPhone"></p>
+                                    </div>
+                                </div>
+                                    <button id="createBtn" type="submit" class="btn btn-danger text-black fw-bold fs-5">Create User</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex text-white justify-content-between mx-5">
+                    <a class="text-decoration-none fs-6 text-white" href="#">
+                        <img class="me-2 mb-1" src="assets/chibi-logo.png" width="40" height="30" alt="logo-img">UniToon.
+                    </a>
+                    <blockquote class="fs-6">&#169; Unitoon. Watch Cartoons.</blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
     <!-- user list  -->
 
     <div id="user-list">
 
     </div>
+
+    <!-- edit user -->
+    <!-- Modal -->
+
+    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark text-white border-5 border-danger border-opacity-50">
+                <div class="modal-header">
+                    <h1 class="modal-title ms-3 fs-4" id="exampleModalLabel">Edit User</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form id="user-id-form">
+                        <div class="create-container border-end-0 rounded-5 m-5 p-4 text-white shadow-lg border">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <div class="d-block align-items-center">
+                                    <div class="d-flex">
+                                    <input id="name" type="text" class="form-control" placeholder="Username" id="username" aria-describedby="emailHelp">
+                                    <i class='fa-solid fa-user ms-2 mt-2'></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-danger" id="errorName"></p>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <div class="d-block align-items-center">
+                                    <div class="d-flex">
+                                        <input id="password" type="password" class="form-control" placeholder="Password" id="password">
+                                        <i class="fa-solid fa-lock ms-2 mt-2"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-danger" id="errorPassword"></p>
+                                    </div>
+
+                                <div class="mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <div class="d-block align-items-center">
+                                    <div class="d-flex">
+                                        <input id="phone" type="tel" class="form-control" placeholder="Phone" id="phone">
+                                        <i class="fa-solid fa-phone ms-2 mt-2"></i>
+                                    </div>
+                                    <div>
+                                        <p class="text-danger" id="errorPhone"></p>
+                                    </div>
+                                </div>
+                                    <button id="editBtn" type="submit" class="btn btn-danger text-black fw-bold fs-5">Edit User</button>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer d-flex text-white justify-content-between mx-5">
+                    <a class="text-decoration-none fs-6 text-white" href="#">
+                        <img class="me-2 mb-1" src="assets/chibi-logo.png" width="40" height="30" alt="logo-img">UniToon.
+                    </a>
+                    <blockquote class="fs-6">&#169; Unitoon. Watch Cartoons.</blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>

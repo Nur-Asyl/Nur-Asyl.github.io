@@ -1,0 +1,182 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniToon</title>
+    <link rel="icon" type="image/x-icon" href="assets/chibi-logo.png">
+    
+    <!-- bootstrap cdn css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- bootstrap cdn js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- font awesome cdn css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <!-- javascript -->
+    <script defer type="module" src="slider.js"></script>
+    <script defer type="module" src="filterByRelease.js"></script>
+    <script defer type="module" src="login.js"></script>
+    <script defer type="module" src="search.js"></script>
+
+    <!-- css file -->
+    <link rel="stylesheet" href="css/main_page.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/login.css">
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+</head>
+<body class="bg-black">
+
+    <!-- header  -->
+    <nav class="navbar navbar-expand-xl text-white fixed-top position-sticky my-header">
+        <div class="container-fluid justify-content-between">
+
+            <!-- logo  -->
+            <div class="ms-5 d-flex">
+                <a class="navbar-brand" href="index.html">
+                    <img src="assets/chibi-logo.png" alt="logo" width="70" height="60"> 
+                </a>
+                <a class="text-white fs-3 fw-bolder pt-3 *0.5 ms-2 text-decoration-none" href="#">UniToon.</a>
+            </div>
+            
+            <!-- offcanvas menu -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle Navigation">
+                <i class="fas fa-bars" style="color: brown; font-size: xx-large;"></i>
+            </button>
+            <div class="offcanvas offcanvas-end bg-black" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title text-white" id="offcanvasNavbarLabel">UniToon.</h5>
+                    <button type="button" class="btn-close bg-danger" style="font-size: x-large;" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav justify-content-lg-center justify-content-end flex-grow-1 mx-5 fs-5 fw-medium">
+                        <li class="nav-item mx-2">
+                            <a class="nav-link active text-white" aria-current="page" href="index.html">Home <i class="fa-solid fa-house"></i></a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" href="cartoons.html">Cartoon <i class="fa-brands fa-youtube"></i></a>
+                        </li>
+                        <li class="nav-item mx-2">
+                            <a class="nav-link text-white" href="popularCartoons.html">Popular <i class="fa-solid fa-fire"></i></a>
+                        </li>
+
+                        <!-- login and signup -->
+
+                        
+                        <a class="mt-2 mx-3 text-white" id="login-content" data-bs-toggle="modal" href="#" data-bs-target="#signupModal" role="button" aria-expanded="false">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                        
+                        
+                        <!-- Modal -->
+                        <div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content bg-dark text-white border-5 border-danger border-opacity-50">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title ms-3 fs-4" id="exampleModalLabel">Login</h1>
+                                        <a class="text-decoration-underline text-danger text-opacity-75" href="signup.html"><h1 class="modal-title ms-3 fs-4">Register</h1></a>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="login" method="GET" action="/home.html">
+                                            <div class="container-fluid">
+                                    
+                                                <div class="mb-3">
+                                                  <label for="username" class="form-label">Username</label>
+                                                  <div class="d-block align-items-center">
+                                                    <div class="d-flex">
+                                                      <input id="name" type="text" class="form-control" placeholder="Username" id="username" aria-describedby="emailHelp">
+                                                      <i class='fa-solid fa-user ms-2 mt-2'></i>
+                                                    </div>
+                                                      <div>
+                                                        <p class="text-danger fs-6" id="errorName"></p>
+                                                      </div>
+                                                  </div>
+                                                </div>
+                                    
+                                                <div class="mb-3">
+                                                  <label for="password" class="form-label">Password</label>
+                                                  <div class="d-block align-items-center">
+                                                    <div class="d-flex">
+                                                      <input id="password" type="password" class="form-control" placeholder="Password" id="password">
+                                                      <i class="fa-solid fa-lock ms-2 mt-2"></i>
+                                                    </div>
+                                                    <div>
+                                                      <p class="text-danger fs-6" id="errorPassword"></p>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                
+                                    
+                                                <button type="submit" class="btn btn-danger w-100 mb-3">Log in</button>
+                                            </div>
+                                          </form>
+                                    </div>
+                                    <div class="modal-footer d-flex text-white  justify-content-between mx-5">
+                                        <a class="text-decoration-none fs-6 text-white" href="#"><img class="me-2 mb-1" src="assets/chibi-logo.png" width="40" height="30" alt="logo-img">UniToon.</a>
+                                        <blockquote class="fs-6">&#169; Unitoon. Watch Cartoons.</blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- profile -->
+                        <li id="profile-content" class="nav-item dropdown mx-3">
+                            <a class="nav-link dropdown-toggle text-white" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                                <i class="fa-solid fa-user"></i>
+                            </a>
+                            <ul class="dropdown-menu bg-black">
+                                <li>
+                                    <a class="dropdown-item my-item text-white" href="profile.html">Profile</a>
+                                </li>
+                                <li>
+                                    <hr class="dropdown-divider bg-white">
+                                </li>
+                                <li>
+                                    <a id="logout" class="dropdown-item text-white" href="index.html">Log out</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex mt-3 mt-lg-0" role="search">
+                        <input id="searchField" class="form-control me-2" type="search" placeholder="Search cart&#127909;n" aria-label="Search">
+                        <button id="searchBtn" class="btn btn-outline-danger" type="submit"><i class="fas fa-magnifying-glass mx-2"></i></button>
+                    </form>
+                    
+                </div>
+            </div>
+        </div>
+        
+    </nav>
+
+    <!-- main section -->
+
+    <!-- cartoons  -->
+
+    <hr class="my-hr">
+
+    <div class="display-4 text-white text-center" id="cartoon">Cartoons</div>
+
+    <div class="container text-center mt-5">
+        <div id="cartoons-list" class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+
+        </div>
+    </div>
+
+    <!-- footer -->
+    <hr class="my-hr">
+    <footer class="d-flex text-white  justify-content-between mx-5">
+        <a class="text-decoration-none text-white" href="#"><img class="me-2 mb-1" src="assets/chibi-logo.png" width="40" height="30" alt="logo-img">UniToon.</a>
+        <blockquote class="">&#169; Unitoon. Watch Cartoons.</blockquote>
+    </footer>
+
+</body>
+</html>

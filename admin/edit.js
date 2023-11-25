@@ -5,34 +5,33 @@ if (!localStorage.getItem('users')) {
 let existingUsersJSON = localStorage.getItem('users');
 let existingUsers = JSON.parse(existingUsersJSON);
 
-document.addEventListener("DOMContentLoaded", function() {
+function Edit(user) {
 
-    const form = document.querySelector("#user-creation-form");
+    const form = document.querySelector("#user-id-form");
 
     const errorName = document.getElementById("errorName");
-    const errorNewname = document.getElementById("errorNewName");
+    const errorNewName = document.getElementById("errorNewName");
     const errorPassword = document.getElementById("errorPassword");
     const errorPhone = document.getElementById("errorPhone");
 
     const usernameInput = form.elements["name"];
-    const newUsernameInput = form.elements["newName"];
+    usernameInput.value = user.username;
     const passwordInput = form.elements["password"];
+    passwordInput.value = user.password;
     const phoneInput = form.elements["phone"];
+    phoneInput.value = user.phone;
 
-    const usernameEditBtn = document.getElementById("usernameEditBtn");
-    const passwordEditBtn = document.getElementById("passwordEditBtn");
-    const phoneEditBtn = document.getElementById("phoneEditBtn");
+    const editBtn = document.getElementById("editBtn");
     
     const phoneMask = IMask(phoneInput, { mask: '+{7}(000)000-00-00' });
-    let nameValid = false;
-    let newNameValid = false;
-    let passwordValid = false;
-    let phoneValid = false;
+    let nameValid = true;
+    let passwordValid = true;
+    let phoneValid = true;
     let errorPasswordArr = [];
 
     usernameInput.addEventListener("input", function() {
-        const username = usernameInput.value;
-        if (username.trim() === "") {
+        const newUsername = usernameInput.value;
+        if (newUsername.trim() === "") {
             errorName.innerText = "Empty name";
             nameValid = false;
         } 
@@ -40,18 +39,6 @@ document.addEventListener("DOMContentLoaded", function() {
             errorName.innerText = null;
         }
         nameValid = true;
-    });
-
-    newUsernameInput.addEventListener("input", function() {
-        const newUsername = newUsernameInput.value;
-        if (newUsername.trim() === "") {
-            errorNewName.innerText = "Empty name";
-            newNameValid = false;
-        } 
-        if (newNameValid) {
-            errorNewName.innerText = null;
-        }
-        newNameValid = true;
     });
 
     passwordInput.addEventListener("input", function() {
@@ -100,73 +87,24 @@ document.addEventListener("DOMContentLoaded", function() {
         phoneValid = true;
     });
 
-    usernameEditBtn.addEventListener("click", (event) => {
+    editBtn.addEventListener("click", (event) => {
         event.preventDefault();
 
-        let loggedInUser = existingUsers.find(user => user.username === usernameInput.value);
-        
-        if (nameValid) {
+        if (nameValid && passwordValid && phoneValid) {
 
             alert("work");
-            
-            if(loggedInUser) {
-                if (existingUsers.find(user => user.username === newUsernameInput.value)) {
-                    errorPassword.innerText = "User with this name exist";
-                } else {
-                    existingUsers[existingUsers.indexOf(loggedInUser)].username = newUsernameInput.value;
-                    
-                    localStorage.setItem('users', JSON.stringify(existingUsers));
-                    alert("edited user");
-                }
+        
+            if (existingUsers.find(u => u.username === usernameInput.value && u.username !== user.username)) {
+                errorPassword.innerText = "User with this name exist";
             } else {
-                errorPassword.innerText = "User doesnt exist";
-            }
-            
-        }
-    });
-
-    passwordEditBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        let loggedInUser = existingUsers.find(user => user.username === usernameInput.value);
-        
-        if (nameValid) {
-
-            alert("work");
-            
-            if(loggedInUser) {
-                
-                existingUsers[existingUsers.indexOf(loggedInUser)].password = passwordInput.value;
+                existingUsers[user.id].username = usernameInput.value;
+                existingUsers[user.id].phone = phoneInput.value;
+                existingUsers[user.id].password = passwordInput.value;
                 
                 localStorage.setItem('users', JSON.stringify(existingUsers));
                 alert("edited user");
-                
-            } else {
-                errorPassword.innerText = "User doesnt exist";
             }
             
-        }
-    });
-
-    phoneEditBtn.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        let loggedInUser = existingUsers.find(user => user.username === usernameInput.value);
-        
-        if (nameValid) {
-
-            alert("work");
-            
-            if(loggedInUser) {
-                
-                existingUsers[existingUsers.indexOf(loggedInUser)].phone = phoneInput.value;
-                
-                localStorage.setItem('users', JSON.stringify(existingUsers));
-                alert("edited user");
-                
-            } else {
-                errorPassword.innerText = "User doesnt exist";
-            }
             
         }
     });
@@ -195,4 +133,6 @@ document.addEventListener("DOMContentLoaded", function() {
             
     //     }
     // });
-});
+};
+
+export { Edit }

@@ -5,15 +5,18 @@ if (!localStorage.getItem('users')) {
 let existingUsersJSON = localStorage.getItem('users');
 let existingUsers = JSON.parse(existingUsersJSON);
 
-document.addEventListener("DOMContentLoaded", function() {
+const createContent = document.getElementById("create-content");
+
+createContent.addEventListener("click", () => {
 
     const form = document.querySelector("#user-creation-form");
-    const errorName = document.getElementById("errorName");
-    const errorPassword = document.getElementById("errorPassword");
-    const errorPhone = document.getElementById("errorPhone");
-    const usernameInput = form.elements["name"];
-    const passwordInput = form.elements["password"];
-    const phoneInput = form.elements["phone"];
+
+    const errorName = document.getElementById("createErrorName");
+    const errorPassword = document.getElementById("createErrorPassword");
+    const errorPhone = document.getElementById("createErrorPhone");
+    const usernameInput = form.elements["createName"];
+    const passwordInput = form.elements["createPassword"];
+    const phoneInput = form.elements["createPhone"];
     
     const phoneMask = IMask(phoneInput, { mask: '+{7}(000)000-00-00' });
     let nameValid = false;
@@ -85,6 +88,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (nameValid && passwordValid && phoneValid) {
             
             let newUser = {
+                id: existingUsers.length,
                 username: usernameInput.value,
                 password: passwordInput.value,
                 phone: phoneInput.value,

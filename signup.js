@@ -2,6 +2,7 @@
 if (!localStorage.getItem('users')) {
     localStorage.setItem('users', JSON.stringify([
         {
+            id: 0,
             username: admin,
             password: admin123
         }
@@ -90,8 +91,9 @@ document.addEventListener("DOMContentLoaded", function() {
         event.preventDefault();
         
         if (nameValid && passwordValid && phoneValid) {
-            
+            prevId = existingUsers.length - 1;
             let newUser = {
+                id: prevId + 1,
                 username: usernameInput.value,
                 password: passwordInput.value,
                 phone: phoneInput.value,
